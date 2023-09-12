@@ -52,10 +52,9 @@ void setup()
   
   for (int i = 0; i < 4; i++) {
     pinMode(relayPins[i], OUTPUT);
-    digitalWrite(relayPins[i], LOW); // Initialize all relays to OFF
+    digitalWrite(relayPins[i], HIGH); // Initialize all relays to OFF
   }
 }
-
 
 void loop()
 {
@@ -65,24 +64,23 @@ void loop()
 BLYNK_WRITE(V0)
 {
   int pinValue = param.asInt();
-  digitalWrite(relayPins[0], !pinValue); // Invert logic: 0 (Blynk ON) -> HIGH, 1 (Blynk OFF) -> LOW
+  digitalWrite(relayPins[0], pinValue); // Use Blynk value directly to control the relay
 }
 
 BLYNK_WRITE(V1)
 {
   int pinValue = param.asInt();
-  digitalWrite(relayPins[1], !pinValue);
+  digitalWrite(relayPins[1], pinValue);
 }
 
 BLYNK_WRITE(V2)
 {
   int pinValue = param.asInt();
-  digitalWrite(relayPins[2], !pinValue);
+  digitalWrite(relayPins[2], pinValue);
 }
 
 BLYNK_WRITE(V3)
 {
   int pinValue = param.asInt();
-  digitalWrite(relayPins[3], !pinValue);
+  digitalWrite(relayPins[3], pinValue);
 }
-
